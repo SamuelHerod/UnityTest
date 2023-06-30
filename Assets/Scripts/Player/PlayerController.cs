@@ -29,22 +29,14 @@ namespace Player
         
         private void FixedUpdate()
         {
-            if (_movementInput == Vector2.zero)
-            {
-                SetDirectionValues(_movementInput);
-                return;
-            }
-            
-            SetDirectionValues(_movementInput);
-
             _spriteRenderer.flipX = _movementInput.x < 0;
 
             bool canMove = TryMove(_movementInput);
             if (canMove) return;
-            
+
             canMove = TryMove(new Vector2(_movementInput.x, 0));
             if (canMove) return;
-            
+
             TryMove(new Vector2(0, _movementInput.y));
         }
 
@@ -56,15 +48,24 @@ namespace Player
 
         private bool TryMove(Vector2 direction)
         {
+            if (direction == Vector2.zero)
+            {
+                SetDirectionValues(Vector2.zero);
+                return false;
+            }
+
             float raycastLength = moveSpeed * Time.fixedDeltaTime + collisionOffset;
             int count = _rb.Cast(direction, collisionSettings, _collisionResults, raycastLength);
 
             if (count != 0)
             {
+                SetDirectionValues(Vector2.zero);
                 return false;
             }
-
+            
+            SetDirectionValues(direction);
             _rb.MovePosition(_rb.position + (direction * (moveSpeed * Time.fixedDeltaTime)));
+            
             return true;
         }
 
