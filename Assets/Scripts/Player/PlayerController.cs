@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 namespace Player
 {
-    public class PlayerCharacter : MonoBehaviour
+    public class PlayerController : MonoBehaviour
     {
         private Rigidbody2D _rb;
         private Animator _animator;
@@ -19,6 +19,9 @@ namespace Player
 
         private static readonly int DirectionX = Animator.StringToHash("DirectionX");
         private static readonly int DirectionY = Animator.StringToHash("DirectionY");
+        private static readonly int SwordAttackDown = Animator.StringToHash("swordAttackDown");
+        private static readonly int SwordAttackUp = Animator.StringToHash("swordAttackUp");
+        private static readonly int SwordAttackSideways = Animator.StringToHash("swordAttackSideways");
 
         private void Awake()
         {
@@ -72,6 +75,18 @@ namespace Player
         private void OnMove(InputValue movementValue)
         {
             _movementInput = movementValue.Get<Vector2>();
+        }
+
+        private void OnAttack()
+        {
+            if (_movementInput.y == 0)
+            {
+                _animator.SetTrigger(SwordAttackSideways);
+            }
+            else
+            {
+                _animator.SetTrigger(_movementInput.y < 0 ? SwordAttackDown : SwordAttackUp);
+            }
         }
     }
 }

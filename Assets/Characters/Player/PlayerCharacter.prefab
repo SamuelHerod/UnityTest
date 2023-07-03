@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 5781564925163262208}
   - component: {fileID: 7152147304782025873}
   - component: {fileID: 6228138612515238372}
-  - component: {fileID: 8927160821291239170}
+  - component: {fileID: 5037338525059700266}
+  - component: {fileID: 1099273302113749246}
   - component: {fileID: 3645887859409966384}
   - component: {fileID: 8898632001014908260}
   - component: {fileID: -7903999644969261276}
@@ -119,7 +120,7 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &8927160821291239170
+--- !u!114 &5037338525059700266
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -132,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
-  collisionOffset: 0.02
+  collisionOffset: 0.05
   collisionSettings:
     useTriggers: 0
     useLayerMask: 0
@@ -142,11 +143,26 @@ MonoBehaviour:
     useOutsideNormalAngle: 0
     layerMask:
       serializedVersion: 2
-      m_Bits: 1
+      m_Bits: 0
     minDepth: 0
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+--- !u!114 &1099273302113749246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448041636636471723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c66c101d7e5b96c47b1c7a1919b465d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HUD: {fileID: 0}
+  playerHealth: 100
+  _isDead: 0
 --- !u!50 &3645887859409966384
 Rigidbody2D:
   serializedVersion: 4
