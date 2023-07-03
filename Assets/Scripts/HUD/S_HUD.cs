@@ -5,12 +5,9 @@ namespace HUD
 {
     public class S_HUD : MonoBehaviour
     {
-        public Canvas deathScreen;
-    
-    
         private void Awake()
         {
-            deathScreen.GameObject().SetActive(false);
+            
         }
 
         // Start is called before the first frame update
@@ -26,4 +23,3 @@ namespace HUD
         }
     }
 }
-
